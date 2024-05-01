@@ -3,6 +3,7 @@ class karen {
     static async request(requestOptions) {
 
         const method       = requestOptions.method;
+        const entrypoint   = requestOptions.entrypoint;
         const url          = requestOptions.url;
         const data         = requestOptions.data || null;
         const structure    = requestOptions.structure || null;
@@ -28,7 +29,7 @@ class karen {
             }
         }
 
-        const response    = await fetch('<url>', fetchOptions);
+        const response    = await fetch(entrypoint, fetchOptions);
         const contentType = response.headers.get('content-type');
 
         if (responseType === 'json' && contentType.includes('application/json')) {
@@ -60,4 +61,3 @@ class karen {
         return this.request(options);
     }
 }
-
