@@ -10,6 +10,7 @@ class karen {
         const structure    = requestOptions.structure || null;
         const headers      = requestOptions.headers || {};
         const chunk        = requestOptions.chunk || 100;
+        const cache        = requestOptions.cache || false;
         const responseType = requestOptions.responseType || 'json';
 
         const fetchOptions = {
@@ -19,7 +20,8 @@ class karen {
                 'karen-key': key,
                 'karen-structure': JSON.stringify(structure),
                 'karen-headers': JSON.stringify(headers),
-                'karen-chunk': chunk
+                'karen-chunk': chunk,
+                'karen-cache': cache
             }
         };
 
