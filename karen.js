@@ -1,17 +1,32 @@
 class karen {
 
+    static global = {
+        method: 'GET',
+        entrypoint: '',
+        key: '',
+        url: '',
+        data: null,
+        structure: null,
+        headers: {},
+        chunk: 100,
+        cache: false,
+        responseType: 'json'
+    };
+
     static async request(requestOptions) {
 
-        const method       = requestOptions.method;
-        const entrypoint   = requestOptions.entrypoint;
-        const key          = requestOptions.key;
-        const url          = requestOptions.url;
-        const data         = requestOptions.data || null;
-        const structure    = requestOptions.structure || null;
-        const headers      = requestOptions.headers || {};
-        const chunk        = requestOptions.chunk || 100;
-        const cache        = requestOptions.cache || false;
-        const responseType = requestOptions.responseType || 'json';
+        const options = { ...this.global, ...requestOptions };
+
+        const method       = options.method;
+        const entrypoint   = options.entrypoint;
+        const key          = options.key;
+        const url          = options.url;
+        const data         = options.data;
+        const structure    = options.structure;
+        const headers      = options.headers;
+        const chunk        = options.chunk;
+        const cache        = options.cache;
+        const responseType = options.responseType;
 
         const fetchOptions = {
             method,
