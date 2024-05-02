@@ -4,6 +4,7 @@ class karen {
 
         const method       = requestOptions.method;
         const entrypoint   = requestOptions.entrypoint;
+        const key          = requestOptions.key;
         const url          = requestOptions.url;
         const data         = requestOptions.data || null;
         const structure    = requestOptions.structure || null;
@@ -15,6 +16,7 @@ class karen {
             method,
             headers: {
                 'karen-url': url,
+                'karen-key': key,
                 'karen-structure': JSON.stringify(structure),
                 'karen-headers': JSON.stringify(headers),
                 'karen-chunk': chunk
