@@ -20,7 +20,7 @@ class karen {
         const options = { ...this.global, ...requestOptions };
 
         const method       = options.method;
-        const entrypoint   = options.entrypoint;
+        const entrypoint   = options.entrypoint ? options.entrypoint : options.url;
         const key          = options.key;
         const url          = options.url;
         const data         = options.data;
@@ -41,6 +41,10 @@ class karen {
                 'karen-cache': cache
             }
         };
+
+        if (options.entrypoint === false) {
+            fetchOptions.headers = headers;
+        }
 
         if (data) {
             if (fetchOptions.headers['Content-Type'] === 'application/x-www-form-urlencoded') {
