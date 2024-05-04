@@ -10,7 +10,9 @@ class karen {
         headers: {},
         chunk: 100,
         cache: false,
-        responseType: 'json'
+        responseType: 'json',
+        before: () => {},
+        after: () => {}
     };
 
     static async request(requestOptions) {
@@ -48,8 +50,12 @@ class karen {
             }
         }
 
+        options.before();
+
         const response    = await fetch(entrypoint, fetchOptions);
         const contentType = response.headers.get('content-type');
+
+        options.after();
 
         if (responseType === 'json' && contentType.includes('application/json')) {
             return await response.json();
