@@ -73,20 +73,4 @@ class karen {
             throw new Error(`Invalid responseType ${responseType} or content-type ${contentType}`);
         }
     }
-
-    static get(options) {
-        return this.request(options);
-    }
-
-    static async post(options) {
-        return this.request(options);
-    }
-
-    static async put(options) {
-        return this.request(options);
-    }
-
-    static async delete(options) {
-        return this.request(options);
-    }
 }
